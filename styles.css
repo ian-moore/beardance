@@ -1,0 +1,97 @@
+html,
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height: 100%;
+}
+
+body::after{
+    position: absolute; 
+    width: 0; 
+    height: 0; 
+    overflow: hidden;
+    z-index: -1;
+    content: url(img/frame2.gif) url(img/frame1.gif) url(img/frame4.gif) url(img/frame0.gif);
+}
+
+.container {
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.header {
+    color: #fff;
+    margin: 0;
+    position: fixed;
+    text-align: center;
+    text-shadow: 2px 2px #000;
+    width: 100%;
+    z-index: 2;
+}
+
+.scene {
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.scene-up-left {
+    background-image: url(img/frame2.gif);
+}
+
+.scene-down {
+    background-image: url(img/frame1.gif);
+}
+
+.scene-left-right {
+    background-image: url(img/frame4.gif);
+}
+
+.scene-up-right {
+    background-image: url(img/frame0.gif);
+}
+
+.button-container {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.button-direction {
+    background: transparent;
+    border: none;
+    color: #f00;
+    cursor: pointer;
+    height: 72px;
+    margin: 2px;
+    padding: 0;
+    width: 72px;
+}
+
+.button-direction:focus {
+    outline: none;
+}
+
+.button-direction:active {
+    filter: hue-rotate(60deg);
+}
+
+.button-direction-overlay {
+    height: 72px;
+    position: absolute;
+    width: 72px;
+}
+
+@media (min-width: 800px) {
+    .container, .header {
+        width: 400px;
+    }
+}
