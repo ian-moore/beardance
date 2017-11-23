@@ -7,11 +7,15 @@ body {
 
 .container {
     margin: auto;
+    max-width: 600px;
 }
 
 .header {
     color: #fff;
     position: fixed;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    width: 100%;
     z-index: 2;
 }
 
@@ -23,7 +27,7 @@ body {
 }
 
 .scene-up-left {
-    background-color: red;
+    background-image: url('img/frame2.gif');
 }
 
 .scene-down {
@@ -31,9 +35,28 @@ body {
 }
 
 .scene-left-right {
-    background-color: green;
+    background-image: url('img/frame4.gif');
 }
 
 .scene-up-right {
-    background-color: yellow;
+    background-image: url('img/frame0.gif');
+}
+
+.button-container {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.button-direction {
+    border: none;
+    color: red;
+    padding: 0;
+    background: transparent;
+    margin: 2px;
+}
+
+.button-direction:active {
+    filter: hue-rotate(60deg);
 }
