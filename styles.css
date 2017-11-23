@@ -66,15 +66,28 @@ body::after{
 }
 
 .button-direction {
+    background: transparent;
     border: none;
     color: #f00;
-    padding: 0;
-    background: transparent;
+    cursor: pointer;
+    height: 72px;
     margin: 2px;
+    padding: 0;
+    width: 72px;
+}
+
+.button-direction:focus {
+    outline: none;
 }
 
 .button-direction:active {
     filter: hue-rotate(60deg);
+}
+
+.button-direction-overlay {
+    height: 72px;
+    position: absolute;
+    width: 72px;
 }
 
 @media (min-width: 800px) {

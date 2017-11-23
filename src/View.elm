@@ -43,7 +43,8 @@ renderButton label pressMsg releaseMsg =
         , onTouchStart pressMsg
         , onTouchEnd releaseMsg
         ]
-        (textWith replaceWithTwemoji label)
+        ([ div [ class "button-direction-overlay" ] []
+        ] ++ (textWith replaceWithTwemoji label))
         
 
 
