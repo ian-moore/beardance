@@ -39,7 +39,7 @@ renderButton label pressMsg releaseMsg =
     button
         [ class "button-direction" 
         , onMouseDown pressMsg
-        , onMouseUp releaseMsg 
+        , onMouseUp releaseMsg
         , onTouchStart pressMsg
         , onTouchEnd releaseMsg
         ]
