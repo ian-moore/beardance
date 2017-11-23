@@ -11,21 +11,21 @@ import Model exposing (..)
 getClassForDirection : DanceDirection -> String
 getClassForDirection direction =
     case direction of
-        Up -> "scene-bg-up"
-        Down -> "scene-bg-down"
-        Left -> "scene-bg-left"
-        Right -> "scene-bg-right"
+        UpLeft -> "scene-up-left"
+        Down -> "scene-down"
+        LeftRight -> "scene-left-right"
+        UpRight -> "scene-up-right"
 
 
 scene : String -> Html Msg
 scene bgClass =
     div [ class ("scene" ++ " " ++ bgClass) ]
-        [ text "insert bg img here"
+        [ text ""
         ]
 
 
-renderButton : String -> Msg -> Html Msg
-renderButton label msg =
+renderButton : String -> Msg -> Msg -> Html Msg
+renderButton label keyDownMsg keyUpMsg =
     button [ class "button-direction" ]
         (textWith replaceWithTwemoji label)
         
@@ -43,8 +43,8 @@ render model =
             ]
         , renderScene model.danceDirection
         , div [ class "button-container" ]
-            [ renderButton "↖" NoOp -- up/left
-            , renderButton "↔" NoOp -- left/right
-            , renderButton "↗" NoOp -- up/right
+            [ renderButton "↖" NoOp NoOp -- up/left
+            , renderButton "↔" NoOp NoOp -- left/right
+            , renderButton "↗" NoOp NoOp -- up/right
             ]
         ]

@@ -2,10 +2,10 @@ module Model exposing (..)
 
 
 type DanceDirection
-    = Up
+    = UpLeft
     | Down
-    | Left
-    | Right
+    | LeftRight
+    | UpRight
 
 
 type alias Model =

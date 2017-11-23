@@ -7,5 +7,33 @@ body {
 
 .container {
     margin: auto;
-    max-width: 600px;
+}
+
+.header {
+    color: #fff;
+    position: fixed;
+    z-index: 2;
+}
+
+.scene {
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.scene-up-left {
+    background-color: red;
+}
+
+.scene-down {
+    background-image: url('img/frame1.gif');
+}
+
+.scene-left-right {
+    background-color: green;
+}
+
+.scene-up-right {
+    background-color: yellow;
 }

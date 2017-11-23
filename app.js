@@ -33240,14 +33240,14 @@ var _user$project$Model$Model = F2(
 	function (a, b) {
 		return {keyPressed: a, danceDirection: b};
 	});
-var _user$project$Model$Right = {ctor: 'Right'};
-var _user$project$Model$Left = {ctor: 'Left'};
+var _user$project$Model$UpRight = {ctor: 'UpRight'};
+var _user$project$Model$LeftRight = {ctor: 'LeftRight'};
 var _user$project$Model$Down = {ctor: 'Down'};
 var _user$project$Model$initialModel = {keyPressed: 0, danceDirection: _user$project$Model$Down};
-var _user$project$Model$Up = {ctor: 'Up'};
+var _user$project$Model$UpLeft = {ctor: 'UpLeft'};
 
-var _user$project$View$renderButton = F2(
-	function (label, msg) {
+var _user$project$View$renderButton = F3(
+	function (label, keyDownMsg, keyUpMsg) {
 		return A2(
 			_elm_lang$html$Html$button,
 			{
@@ -33271,21 +33271,21 @@ var _user$project$View$scene = function (bgClass) {
 		},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text('insert bg img here'),
+			_0: _elm_lang$html$Html$text(''),
 			_1: {ctor: '[]'}
 		});
 };
 var _user$project$View$getClassForDirection = function (direction) {
 	var _p0 = direction;
 	switch (_p0.ctor) {
-		case 'Up':
-			return 'scene-bg-up';
+		case 'UpLeft':
+			return 'scene-up-left';
 		case 'Down':
-			return 'scene-bg-down';
-		case 'Left':
-			return 'scene-bg-left';
+			return 'scene-down';
+		case 'LeftRight':
+			return 'scene-left-right';
 		default:
-			return 'scene-bg-right';
+			return 'scene-up-right';
 	}
 };
 var _user$project$View$renderScene = function (_p1) {
@@ -33328,13 +33328,13 @@ var _user$project$View$render = function (model) {
 						},
 						{
 							ctor: '::',
-							_0: A2(_user$project$View$renderButton, '↖', _user$project$Message$NoOp),
+							_0: A3(_user$project$View$renderButton, '↖', _user$project$Message$NoOp, _user$project$Message$NoOp),
 							_1: {
 								ctor: '::',
-								_0: A2(_user$project$View$renderButton, '↔', _user$project$Message$NoOp),
+								_0: A3(_user$project$View$renderButton, '↔', _user$project$Message$NoOp, _user$project$Message$NoOp),
 								_1: {
 									ctor: '::',
-									_0: A2(_user$project$View$renderButton, '↗', _user$project$Message$NoOp),
+									_0: A3(_user$project$View$renderButton, '↗', _user$project$Message$NoOp, _user$project$Message$NoOp),
 									_1: {ctor: '[]'}
 								}
 							}
