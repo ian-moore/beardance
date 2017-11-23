@@ -1,20 +1,36 @@
 html,
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
+#app {
+    height: 100%;
+}
+
+body::after{
+    position: absolute; 
+    width: 0; 
+    height: 0; 
+    overflow: hidden;
+    z-index: -1;
+    content: url(img/frame2.gif) url(img/frame1.gif) url(img/frame4.gif) url(img/frame0.gif);
+}
+
 .container {
+    height: 100%;
     margin: auto;
-    max-width: 600px;
+    position: relative;
 }
 
 .header {
     color: #fff;
+    margin: 0;
     position: fixed;
     text-align: center;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px #000;
     width: 100%;
     z-index: 2;
 }
@@ -27,19 +43,19 @@ body {
 }
 
 .scene-up-left {
-    background-image: url('img/frame2.gif');
+    background-image: url(img/frame2.gif);
 }
 
 .scene-down {
-    background-image: url('img/frame1.gif');
+    background-image: url(img/frame1.gif);
 }
 
 .scene-left-right {
-    background-image: url('img/frame4.gif');
+    background-image: url(img/frame4.gif);
 }
 
 .scene-up-right {
-    background-image: url('img/frame0.gif');
+    background-image: url(img/frame0.gif);
 }
 
 .button-container {
@@ -51,7 +67,7 @@ body {
 
 .button-direction {
     border: none;
-    color: red;
+    color: #f00;
     padding: 0;
     background: transparent;
     margin: 2px;
@@ -59,4 +75,10 @@ body {
 
 .button-direction:active {
     filter: hue-rotate(60deg);
+}
+
+@media (min-width: 800px) {
+    .container, .header {
+        width: 400px;
+    }
 }

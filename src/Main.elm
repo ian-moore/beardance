@@ -9,21 +9,15 @@ import Model exposing (..)
 import View exposing (render)
 
 
-main : Program Never Model Msg
-main =
-    Html.program
-        { init = init
-        , view = render
-        , update = update
-        , subscriptions = subscriptions
-        }
-
-
 update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
-    case msg of
+update msg model = 
+    case Debug.log "msg" msg of
         NoOp ->
-            (model, Cmd.none)
+            model ! []
+        UpdateDirection direction ->
+            { model 
+            | danceDirection = direction
+            } ! []
 
 
 subscriptions : Model -> Sub Msg
@@ -35,3 +29,13 @@ init : (Model, Cmd Msg)
 init = 
     (initialModel, Cmd.none)
 
+
+
+main : Program Never Model Msg
+main =
+    Html.program
+        { init = init
+        , view = render
+        , update = update
+        , subscriptions = subscriptions
+        }

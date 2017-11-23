@@ -9,13 +9,13 @@ type DanceDirection
 
 
 type alias Model =
-    { keyPressed : Int
+    { pressedKeys : Int
     , danceDirection : DanceDirection
     }
 
 
 initialModel : Model
 initialModel =
-    { keyPressed = 0
+    { pressedKeys = 0
     , danceDirection = Down
     }

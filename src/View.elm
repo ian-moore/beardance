@@ -4,6 +4,8 @@ module View exposing (render)
 import Elmoji exposing (textWith, replaceWithTwemoji)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (..)
+import Json.Decode as Json
 import Message exposing (..)
 import Model exposing (..)
 
@@ -19,20 +21,38 @@ getClassForDirection direction =
 
 scene : String -> Html Msg
 scene bgClass =
-    div [ class ("scene" ++ " " ++ bgClass) ]
-        [ text ""
-        ]
+    div [ class ("scene" ++ " " ++ bgClass) ] []
+
+
+onTouchStart : msg -> Attribute msg
+onTouchStart message =
+    on "touchstart" (Json.succeed message)
+
+
+onTouchEnd : msg -> Attribute msg
+onTouchEnd message =
+    on "touchend" (Json.succeed message)
 
 
 renderButton : String -> Msg -> Msg -> Html Msg
-renderButton label keyDownMsg keyUpMsg =
-    button [ class "button-direction" ]
+renderButton label pressMsg releaseMsg =
+    button
+        [ class "button-direction" 
+        , onMouseDown pressMsg
+        , onMouseUp releaseMsg 
+        , onTouchStart pressMsg
+        , onTouchEnd releaseMsg
+        ]
         (textWith replaceWithTwemoji label)
         
 
 
 renderScene : DanceDirection -> Html Msg
 renderScene = getClassForDirection >> scene
+
+
+defaultMsg : Msg
+defaultMsg = (UpdateDirection Down)
 
 
 render : Model -> Html Msg
@@ -43,8 +63,8 @@ render model =
             ]
         , renderScene model.danceDirection
         , div [ class "button-container" ]
-            [ renderButton "↖" NoOp NoOp -- up/left
-            , renderButton "↔" NoOp NoOp -- left/right
-            , renderButton "↗" NoOp NoOp -- up/right
+            [ renderButton "↖" (UpdateDirection UpLeft) defaultMsg
+            , renderButton "↔" (UpdateDirection LeftRight) defaultMsg
+            , renderButton "↗" (UpdateDirection UpRight) defaultMsg
             ]
         ]

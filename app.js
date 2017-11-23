@@ -8145,6 +8145,121 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
+var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
+var _elm_lang$html$Html_Events$targetChecked = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'checked',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$bool);
+var _elm_lang$html$Html_Events$targetValue = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'value',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$string);
+var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
+var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
+var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
+var _elm_lang$html$Html_Events$onFocus = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'focus',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onBlur = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'blur',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
+	_elm_lang$html$Html_Events$defaultOptions,
+	{preventDefault: true});
+var _elm_lang$html$Html_Events$onSubmit = function (msg) {
+	return A3(
+		_elm_lang$html$Html_Events$onWithOptions,
+		'submit',
+		_elm_lang$html$Html_Events$onSubmitOptions,
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onCheck = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'change',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
+};
+var _elm_lang$html$Html_Events$onInput = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'input',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
+};
+var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseout',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseover',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseleave',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseenter',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseup',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mousedown',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'dblclick',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'click',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$Options = F2(
+	function (a, b) {
+		return {stopPropagation: a, preventDefault: b};
+	});
+
 var _teepark$elmoji$Elmoji_Internal_Valid$wellWasIt = function (maybe) {
 	var _p0 = maybe;
 	if (_p0.ctor === 'Nothing') {
@@ -33234,26 +33349,58 @@ var _teepark$elmoji$Elmoji$text_ = function (_p2) {
 		A2(_teepark$elmoji$Elmoji$textWith, _teepark$elmoji$Elmoji$replaceWithEmojiOne, _p2));
 };
 
-var _user$project$Message$NoOp = {ctor: 'NoOp'};
-
 var _user$project$Model$Model = F2(
 	function (a, b) {
-		return {keyPressed: a, danceDirection: b};
+		return {pressedKeys: a, danceDirection: b};
 	});
 var _user$project$Model$UpRight = {ctor: 'UpRight'};
 var _user$project$Model$LeftRight = {ctor: 'LeftRight'};
 var _user$project$Model$Down = {ctor: 'Down'};
-var _user$project$Model$initialModel = {keyPressed: 0, danceDirection: _user$project$Model$Down};
+var _user$project$Model$initialModel = {pressedKeys: 0, danceDirection: _user$project$Model$Down};
 var _user$project$Model$UpLeft = {ctor: 'UpLeft'};
 
+var _user$project$Message$UpdateDirection = function (a) {
+	return {ctor: 'UpdateDirection', _0: a};
+};
+var _user$project$Message$NoOp = {ctor: 'NoOp'};
+
+var _user$project$View$defaultMsg = _user$project$Message$UpdateDirection(_user$project$Model$Down);
+var _user$project$View$onTouchEnd = function (message) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'touchend',
+		_elm_lang$core$Json_Decode$succeed(message));
+};
+var _user$project$View$onTouchStart = function (message) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'touchstart',
+		_elm_lang$core$Json_Decode$succeed(message));
+};
 var _user$project$View$renderButton = F3(
-	function (label, keyDownMsg, keyUpMsg) {
+	function (label, pressMsg, releaseMsg) {
 		return A2(
 			_elm_lang$html$Html$button,
 			{
 				ctor: '::',
 				_0: _elm_lang$html$Html_Attributes$class('button-direction'),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onMouseDown(pressMsg),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onMouseUp(releaseMsg),
+						_1: {
+							ctor: '::',
+							_0: _user$project$View$onTouchStart(pressMsg),
+							_1: {
+								ctor: '::',
+								_0: _user$project$View$onTouchEnd(releaseMsg),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
 			},
 			A2(_teepark$elmoji$Elmoji$textWith, _teepark$elmoji$Elmoji$replaceWithTwemoji, label));
 	});
@@ -33269,11 +33416,7 @@ var _user$project$View$scene = function (bgClass) {
 					A2(_elm_lang$core$Basics_ops['++'], ' ', bgClass))),
 			_1: {ctor: '[]'}
 		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(''),
-			_1: {ctor: '[]'}
-		});
+		{ctor: '[]'});
 };
 var _user$project$View$getClassForDirection = function (direction) {
 	var _p0 = direction;
@@ -33328,13 +33471,25 @@ var _user$project$View$render = function (model) {
 						},
 						{
 							ctor: '::',
-							_0: A3(_user$project$View$renderButton, '↖', _user$project$Message$NoOp, _user$project$Message$NoOp),
+							_0: A3(
+								_user$project$View$renderButton,
+								'↖',
+								_user$project$Message$UpdateDirection(_user$project$Model$UpLeft),
+								_user$project$View$defaultMsg),
 							_1: {
 								ctor: '::',
-								_0: A3(_user$project$View$renderButton, '↔', _user$project$Message$NoOp, _user$project$Message$NoOp),
+								_0: A3(
+									_user$project$View$renderButton,
+									'↔',
+									_user$project$Message$UpdateDirection(_user$project$Model$LeftRight),
+									_user$project$View$defaultMsg),
 								_1: {
 									ctor: '::',
-									_0: A3(_user$project$View$renderButton, '↗', _user$project$Message$NoOp, _user$project$Message$NoOp),
+									_0: A3(
+										_user$project$View$renderButton,
+										'↗',
+										_user$project$Message$UpdateDirection(_user$project$Model$UpRight),
+										_user$project$View$defaultMsg),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -33351,8 +33506,20 @@ var _user$project$Main$subscriptions = function (model) {
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p0 = msg;
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p0 = A2(_elm_lang$core$Debug$log, 'msg', msg);
+		if (_p0.ctor === 'NoOp') {
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				model,
+				{ctor: '[]'});
+		} else {
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				_elm_lang$core$Native_Utils.update(
+					model,
+					{danceDirection: _p0._0}),
+				{ctor: '[]'});
+		}
 	});
 var _user$project$Main$main = _elm_lang$html$Html$program(
 	{init: _user$project$Main$init, view: _user$project$View$render, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions})();
