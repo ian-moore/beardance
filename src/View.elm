@@ -59,7 +59,7 @@ render : Model -> Html Msg
 render model =
     div [ class "container" ]
         [ h1 [ class "header" ] 
-            [ text "Bear Dance" 
+            [ text "Space Bear" 
             ]
         , renderScene model.danceDirection
         , div [ class "button-container" ]
