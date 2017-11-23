@@ -1,5 +1,7 @@
 module View exposing (render)
 
+
+import Elmoji exposing (textWith, replaceWithTwemoji)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (..)
@@ -25,8 +27,8 @@ scene bgClass =
 renderButton : String -> Msg -> Html Msg
 renderButton label msg =
     button [ class "button-direction" ]
-        [ text label
-        ]
+        (textWith replaceWithTwemoji label)
+        
 
 
 renderScene : DanceDirection -> Html Msg
